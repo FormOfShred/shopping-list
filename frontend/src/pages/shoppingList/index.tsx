@@ -1,7 +1,9 @@
-export default function ShoppingList() {
-    return (
-      <div>
-        <p>Shopping List</p>
-      </div>
-    );
-  }
+const ShoppingList = () => {
+  return (
+    <div>
+      <h1>Shopping List</h1>
+    </div>
+  );
+};
+
+export default ShoppingList;
