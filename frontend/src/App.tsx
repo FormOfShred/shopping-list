@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import List from './components/Dashboard/list';
+import AddList from './components/Dashboard/addList';
 
 
 function App() {
@@ -27,10 +28,15 @@ function App() {
 
   return (
       <div className="App">
-        <p>Shopping List</p>
+        <h1>Shopping List</h1>
+
+        <AddList />
+
         {lists.map((list, index) => (
           <List key={index} title={list.title} items={list.items} />
         ))}
+
+
       </div>
   );
 }
