@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -24,13 +24,17 @@ function App() {
     items: ['Book 1', 'Book 2', 'Book 3']
   }
 
-  const lists = [firstList, secondList, thirdList];
+  const [lists, setLists] = useState([firstList, secondList, thirdList]);
+
+  const addList = (title: any, items: any) => {
+    setLists([...lists, { title, items }]);
+  }
 
   return (
       <div className="App">
         <h1>Shopping List</h1>
 
-        <AddList />
+        <AddList onAddList={addList} />
 
         {lists.map((list, index) => (
           <List key={index} title={list.title} items={list.items} />

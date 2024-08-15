@@ -1,6 +1,8 @@
+import { on } from "events";
+import React from "react";
 import { useState } from "react";
 
-const AddList = () => {
+const AddList = ({ onAddList }: { onAddList: (title: string, items: string[]) => void }) => {
     const [title, setTitle] = useState('');
     const [item, setItem] = useState('');
     const [items, setItems] = useState<string[]>([]);
@@ -23,6 +25,7 @@ const AddList = () => {
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
+        onAddList( title, items );
     }
 
     return (
