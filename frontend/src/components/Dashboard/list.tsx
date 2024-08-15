@@ -1,19 +1,29 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const List = (props: { title: string, items: string[] }) => {
+interface Props {
+    title: string;
+    items: string[];
+    onDeleteList: (title: string) => void;
+}
+
+const List: React.FC<Props> = ({ title, items, onDeleteList }) => {
     const navigate = useNavigate();
 
-    const { title, items } = props;
-
-    const handleTitleClick = () => {
+    const handleOpenList = () => {
         navigate('/shoppinglist', { state: { title, items } });
       };
+
+    const handleTitleClick = () => {
+        console.log('Delete list');
+        onDeleteList(title);
+    }
 
     return (
         <div>
             {/* List 1 */}
-            <p onClick={handleTitleClick}>{ title }</p>
+            <p onClick={handleOpenList} style={{ cursor: 'pointer', textDecoration: 'underline'}}>{ title }</p>
+            <p onClick={handleTitleClick} style={{ cursor: 'pointer', color: 'red'}}>Delete</p>
             <ul>
                 { items.map((item, index) => {
                     return <li key={index}>{ item }</li>

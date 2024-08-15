@@ -30,6 +30,10 @@ function App() {
     setLists([...lists, { title, items }]);
   }
 
+  const deleteFromList = (title: any) => {
+    setLists(lists.filter(list => list.title !== title));
+  }
+
   return (
       <div className="App">
         <h1>Shopping List</h1>
@@ -37,7 +41,7 @@ function App() {
         <AddList onAddList={addList} />
 
         {lists.map((list, index) => (
-          <List key={index} title={list.title} items={list.items} />
+          <List key={index} title={list.title} items={list.items} onDeleteList={deleteFromList} />
         ))}
 
 
